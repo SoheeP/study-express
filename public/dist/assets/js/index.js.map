@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["a","b"],"mappings":"aAAA,IAAMA,EAAI,GACNC,EADM,WAGN,MAAO","file":"index.js","sourcesContent":["const a = 10;\r\nlet b = (()=>{\r\n  return () => {\r\n    return (true)?`??야호`:`ㅠㅠㅏㅏ`\r\n  }\r\n})()"],"sourceRoot":"../src"}
