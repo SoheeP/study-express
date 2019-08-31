@@ -1,6 +1,1 @@
-const a = 10;
-let b = (()=>{
-  return () => {
-    return (true)?`??야호`:`ㅠㅠㅏㅏ`
-  }
-})()
+"use strict";console.log("뿌앵");
