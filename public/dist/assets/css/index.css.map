@@ -1,1 +1,1 @@
-{"version":3,"sources":["Common/Components/Common/footer.scss","Common/Base/_variables.scss","index.scss"],"names":[],"mappings":"AAAA,oBACE,qBCEsB,CCDxB,GACE,SAAU","file":"index.css","sourcesContent":["footer.base__footer {\r\n  background-color: $footerBgColor;\r\n}","\r\n\r\n$mainBoarderColor : #333;\r\n$footerBgColor    : #222;","@import './Common/Base/_base';\r\n\r\nh1{\r\n  color: red;\r\n}"],"sourceRoot":"../src"}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"index.css","sourceRoot":"../src","sourcesContent":[]}

@@ -11,14 +11,12 @@
 
 
  // Helper
-@import './variables';
-@import './function.scss';
+@import './variables'; 
+// @import './variables';
+@import './function';
 @import './mixins';
 
 // Base
 @import './com';
 
 // Vender
-@import './../Components/Common/navigation.scss';
-@import './../Components/Common/header.scss';
-@import './../Components/Common/footer.scss';
