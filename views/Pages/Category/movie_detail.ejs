@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include(`${process.cwd()}/views/Common/Base/head.ejs`, {path: 'Pages/Category/movie_detail',title:"HOME "}) %>
+</head>
+
+<body>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
+  <main class="container">
+    <h1>디테일</h1>
+    <img src="https://yts.tl<%= movie.large_cover_image %>" alt="">
+  </main>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/Common/Base/foot.ejs`, {path: 'Pages/Category/movie_detail'}) %>
+</body>
+
+</html>

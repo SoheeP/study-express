@@ -48,4 +48,5 @@ function listPage(category){
   }
 }
 
-exports.listPage = listPage;
+exports.listPage  = listPage;
+exports.indexInfo = indexInfo;

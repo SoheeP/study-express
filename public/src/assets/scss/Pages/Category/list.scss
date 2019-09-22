@@ -1,0 +1,27 @@
+@import './../../Common/Base_list/base';
+
+.list__title{
+  @include fontMixin(#333, 24px){
+    font-weight: bold;
+  }
+}
+
+.list__movie_row{
+  @include floatClear;
+  border: 2px solid orange;
+}
+.list__movie_box{
+  float: left;
+  width: calc(100% / 10);
+  border: 1px solid green;
+  padding: 5px;
+
+}
+
+.list__img{
+  width: 100%;
+  height: 250px;
+}
+.list__movie_link{
+  display: block;
+}
