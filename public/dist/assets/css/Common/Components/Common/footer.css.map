@@ -1,1 +1,0 @@
-{"version":3,"sources":["Common/Components/Common/footer.scss"],"names":[],"mappings":"AAAA,oBACE,8BAA+B","file":"footer.css","sourcesContent":["footer.base__footer {\r\n  background-color: footerBgColor;\r\n}"],"sourceRoot":"../../../../src"}

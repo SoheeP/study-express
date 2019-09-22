@@ -1,1 +1,0 @@
-{"version":3,"sources":["Pages/ViewPages/about.scss"],"names":[],"mappings":"AAAA,GACE,SAAU,CACX,EAEC,UACF","file":"about.css","sourcesContent":["h1{\r\n  color: red;\r\n}\r\np{\r\n  color: pink\r\n}"],"sourceRoot":"../../../src"}

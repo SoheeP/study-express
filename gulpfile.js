@@ -3,8 +3,10 @@ const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
-sass.compiler = require('node-sass');
+const sassGlob = require('gulp-sass-glob');
+const plumber = require('gulp-plumber');
 const autoprefixer = require('gulp-autoprefixer');
+sass.compiler = require('node-sass');
 const del = require('del');
 
 const assets = {
@@ -23,19 +25,19 @@ const paths={
   },
 }
 const setting={
-  style:{
-    sass:{
+  styles: {
+    scss_option: {
       outputStyle: "compressed",
       indentType: "tab",
       indentWidth: 1,
       precision: 3,
       sourceComments: false,
       errLogToConsole: true,
+      // importer: moduleImporter({ basedir: path.join(__dirname, 'public/src/assets/scss/') }) 
     },
-    autoprefixer:{
-      browsers: ['last 3 versions'],
-  }
-  }
+    rootFontSize: 16
+  },
+
 }
 var info=()=>{
 console.log(`
@@ -63,7 +65,9 @@ gulp.task('scripts', function () {
 gulp.task('styles', function () {
   return gulp.src(paths.style.src)
     .pipe(sourcemaps.init())
-    .pipe(sass(setting.style.sass).on('error', sass.logError))
+    .pipe(sassGlob())
+    .pipe(plumber())
+    .pipe(sass(setting.styles.scss_option).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(sourcemaps.write('./', {sourceRoot: '../src'}))
     .pipe(gulp.dest(paths.style.dist));

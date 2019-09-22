@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include(`${process.cwd()}/views/Common/Base/head.ejs`, {path: 'Page/Category/list',title:"HOME "}) %>
+</head>
+
+<body>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
+  <main class="container">
+    <h1>리스트다</h1>
+    <div>
+      <p>오늘의 추천영화</p>
+    </div>
+    <div>
+      <% movies.map(list => { %>
+      <div>
+        <div>
+          <img src="https://yts.tl<%= list.medium_cover_image%>" alt="">
+        </div>
+        <div>
+          <%= list.title_long %>
+        </div>
+        <div>
+          <%= list.genres %>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+  </main>
+
+  <%- include(`${process.cwd()}/views/Common/Component/Common/footer.ejs`, {path: 'Page/Category/list'}) %>
+  <%- include(`${process.cwd()}/views/Common/Base/foot.ejs`, {path: 'Page/Category/list'}) %>
+</body>
+
+</html>
