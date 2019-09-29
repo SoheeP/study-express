@@ -19,7 +19,7 @@ var {
 
 
 
-/* GET home page. */
+/* 인덱스페이지 */
 router.get('/', async function (req, res, next) {
   let limit = 10;
   let body = {};
@@ -44,8 +44,12 @@ router.get('/', async function (req, res, next) {
   };
 
 
+
   await axios.all([
-      Axios(axiosLikeConfig), Axios(axiosDownloadConfig), Axios(axiosRatingConfig), Axios(axiosMainSlideConfig)
+      Axios(axiosLikeConfig),
+      Axios(axiosDownloadConfig),
+      Axios(axiosRatingConfig),
+      Axios(axiosMainSlideConfig)
     ])
     .then(axios.spread(function (like, download, rating, main) {
       body.categoryData = [{
@@ -65,10 +69,12 @@ router.get('/', async function (req, res, next) {
     }));
   body.pageName = 'Home',
     res.render('index', body);
-
-
 });
 
+
+/**
+ * ROUTE: 무비 리스트 페이지
+ */
 router.get('/:category/list/:page', function (req, res, next) {
   console.log(req.params);
   console.log(req.params.category);
@@ -104,28 +110,55 @@ router.get('/:category/list/:page', function (req, res, next) {
 
 });
 
-router.get('/:category/detail/:seq', function (req, res, next) {
+/**
+ * ROUTE: 디테일 페이지
+ */
+router.get('/:category/detail/:seq', async function (req, res, next) {
   console.log(req.params, `detail params`);
   let body = {};
   let movie_seq = req.params.seq;
   let pageName = 'movie_detail';
-  axios.get(`https://yts.tl/api/v2/movie_details.json?movie_id=${movie_seq}`)
-    .then(function (response) {
-      let data = response.data;
 
-      if (data.status === 'ok') {
-        log(data.data);
-        body.movie = data.data.movie;
-        body.pageName = pageName;
-        res.render('Pages/Category/movie_detail', body);
+  let randomSortBy = ['title', 'year', 'rating', 'peers', 'seeds', 'download_count', 'like_count', 'date_added'];
+  let randomSort = randomSortBy[Math.floor(Math.random() * randomSortBy.length)]
+
+  let axiosDetailConfig = {
+    method: 'get',
+    url: `/movie/detail?movie_id=${movie_seq}`,
+  };
+  let axiosDetailSlideConfig = {
+    method: 'get',
+    url: `/movie?limit=20&sort_by=${randomSort}`,
+  }
+
+
+
+  let movieGrade = {
+    G: '전체 관람가',
+    PG: '부모님동반 가능',
+    ['PG-13']: '13세 이하',
+    R: '17세',
+    ['NC-17']: '17세 이상'
+  };
+
+  await axios.all([Axios(axiosDetailConfig), Axios(axiosDetailSlideConfig)])
+    .then(axios.spread(function (detail, slide) {
+      let detailInfo = detail.data.data.movie;
+
+      if (detailInfo.mpa_rating.length !== 0) {
+        detailInfo.mpa_rating = movieGrade[detailInfo.mpa_rating];
+      } else {
+        detailInfo.mpa_rating = '전체 관람가'
       }
 
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-  // https://yts.tl/api/v2/movie_details.json?movie_id
+      body.movieDetail = detail.data.data.movie;
+      body.detailSlide = slide.data.data.movies;
+      body.pageName = pageName;
+    }));
+
+
+
+  res.render('Pages/Category/movie_detail', body);
 
 });
 

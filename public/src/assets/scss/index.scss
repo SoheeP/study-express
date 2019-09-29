@@ -4,29 +4,92 @@
 .main__slide_box {
   position: relative;
   height: 600px;
-  background-position: left;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.main__main_slide_picture_box {
+.main__main_slide_rating_box {
+  position: relative;
+}
+
+.main__main_slide_rating_color {
   position: absolute;
-  right: 100px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 2px solid orange;
+  left: 0;
+  top: 2px;
+  overflow: hidden;
+  // color: red;
+}
+
+.main__main_slide_rating_dim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.main__slide_dim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, .5);
+}
+
+.main__slide_col_box {
+  &.left {
+    padding: 80px;
+  }
+
+  &.right {
+    padding-left: 20px;
+  }
+}
+
+.main__main_slide_picture_box {
+  position: relative;
+  margin-top: 20px;
+  // position: absolute;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // right: 100px;
+  height: 500px;
+  width: 350px;
+}
+
+.main__main_slide_readmore_box {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.main__main_slide_readmore_an {
+  display: inline-block;
+  padding: 13px 25px;
+  border-radius: 5px;
+  background: rgb(255, 145, 0);
+
+  @include fontMixin(#fff, 18px) {
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    color: #fff;
+  }
 }
 
 .main__main_slide_picture_img {
   width: 100%;
+  height: 100%;
 }
 
 .main__main_slide_info_box {
-  position: absolute;
-  left: 100px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 1px solid red;
+  // position: absolute;
+  // left: 100px;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // border: 1px solid red;
 }
 
 .main__main_slide_title {
@@ -36,11 +99,16 @@
 }
 
 .main__main_slide_sub_info {
-  width: 400px;
+  margin-top: 50px;
+  width: 80%;
 
-  @include fontMixin(rgb(180, 180, 180), 20px) {
+  @include fontMixin(rgb(163, 163, 163), 19px) {
     font-weight: 500;
   }
+}
+
+.main__main_slide_rating {
+  color: rgb(233, 233, 233);
 }
 
 .main__poster_row {

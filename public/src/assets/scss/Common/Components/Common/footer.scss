@@ -1,20 +1,24 @@
-
 @import '../../Base_list/base';
 
-.footer{
-  &.base__footer{
+.footer {
+  padding: 40px 0;
+
+  &.base__footer {
     background-color: $footerBgColor;
   }
-  .footer__info_tx{
-    @include font(12px,$footerTxColor);
+
+  .footer__info_tx {
+    @include font(12px, $footerTxColor);
   }
-  .connect__sns_list{
+
+  .connect__sns_list {
     color: #999;
     text-align: center;
     font-size: 15px;
     transition: all .2s;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
       color: #fff;
     }
   }

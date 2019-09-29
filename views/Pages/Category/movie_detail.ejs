@@ -8,8 +8,46 @@
 <body>
   <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
   <main class="container">
+    <div class="row">
+      <div class="detail__slide">
+        <% detailSlide.map(slide_list => { %>
+        <div class="detail__slide_box">
+          <a href="/movie/detail/<%= slide_list.id %>" class="detail__slide_box_an">
+            <img src="https://yts.tl<%= slide_list.medium_cover_image %>" alt="" class="detail__slide_box_img">
+          </a>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <img src="https://yts.tl/<%= movieDetail.large_cover_image %>" alt="">
+      </div>
+      <div class="col-lg-6">
+        <h2 class="detail__movie_title">
+          <%= movieDetail.title_long %>
+        </h2>
+        <div class="detail__movie_info">
+          <div class="detail__movie_rating">
+            <span>평점:</span>
+            <span><%= movieDetail.rating %></span>
+          </div>
+          <div class="detail__movie_sub_info">
+            <span>상영시간: <%= movieDetail.runtime %> 분</span>
+            <span>장르: <%= movieDetail.genres %></span>
+            <span>언어: <%= movieDetail.language %></span>
+            <span>등급: <%= movieDetail.mpa_rating %></span>
+          </div>
+          <div class="detail__movie_summary">
+            <%= movieDetail.description_full %>
+          </div>
+
+        </div>
+      </div>
+    </div>
     <h1>디테일</h1>
-    <img src="https://yts.tl<%= movie.large_cover_image %>" alt="">
+
+
   </main>
   <%- include(`${process.cwd()}/views/Common/Component/Common/footer.ejs`) %>
   <%- include(`${process.cwd()}/views/Common/Base/foot.ejs`, {path: 'Pages/Category/movie_detail'}) %>

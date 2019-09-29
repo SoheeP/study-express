@@ -1,6 +1,12 @@
 console.log("뿌앵");
 $(document).ready(function () {
 
+  Array.from(document.querySelectorAll('[data-rating]')).map(list => {
+    console.log(list);
+    list.style.width = `${list.getAttribute('data-rating')}%`;
+  })
+
+
   $('.main__slider').slick({
     dots: false,
     infinite: true,

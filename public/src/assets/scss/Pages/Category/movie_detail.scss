@@ -1,0 +1,34 @@
+@import '../../Common/Base_list/base';
+
+.detail__slide_box {
+
+  // border: 1px solid red;
+  // padding: 10px;
+  &:hover {
+    // border: 1px solid orange;
+    // transform: scale(1.1);
+  }
+}
+
+.detail__slide_box_img {
+  width: 50px;
+}
+
+.detail__slide_box_an {
+  transition: .2s;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+
+.detail__slide {
+  .slick-list {
+    padding: 20px;
+  }
+
+}
+
+.detail__slide_box_an {
+  display: inline-block;
+}
