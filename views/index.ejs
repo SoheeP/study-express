@@ -7,8 +7,52 @@
 
 <body>
   <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
-  <main class="container">
-    <h1>인덱스</h1>
+  <main class="container-fluid">
+    <%= mainSlideData %>
+
+    <div class="main__slider">
+
+      <% mainSlideData.map(slide_info => { %>
+      <div class="main__slide_box"
+        style="background-image: url('https://yts.tl/<%= slide_info.background_image_original %>')">
+        <div class="main__main_slide_info_box">
+          <h2 class="main__main_slide_title"><%= slide_info.title_long %></h2>
+          <p class="main__main_slide_sub_info"><%= slide_info.summary %></p>
+        </div>
+        <div class="main__main_slide_picture_box">
+          <img src="https://yts.tl/<%= slide_info.large_cover_image %>" alt="" class="main__main_slide_picture_img">
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <% categoryData.map(category_list => { %>
+    <h2 class="main__category_title"><%= category_list.category %></h2>
+    <div class="main__poster_row">
+      <% category_list.movies.map(movie_info_list => { %>
+      <div class="main__poster_box">
+        <a href="#none" class="main__poster_box_an">
+          <div class="content__box">
+            <img src="https://yts.tl<%= movie_info_list.large_cover_image %>" alt="" class="main__poster_img">
+            <h3><%= movie_info_list.title %></h3>
+            <p class="main__description">
+              <p class="main__rating">
+                <span>평점: </span>
+                <%= movie_info_list.rating  %></p>
+              <p class="main__runtime">
+                <span>상영시간: </span>
+                <%= movie_info_list.runtime  %></p>
+            </p>
+          </div>
+        </a>
+      </div>
+      <% }) %>
+    </div>
+    <% })%>
+
+
+
+
   </main>
   <%- include(`${process.cwd()}/views/Common/Component/Common/footer.ejs`, {path: 'index'}) %>
   <%- include(`${process.cwd()}/views/Common/Base/foot.ejs`, {path: 'index'}) %>

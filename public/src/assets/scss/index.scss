@@ -1,1 +1,79 @@
 @import './Common/Base_list/base';
+
+
+.main__slide_box {
+  position: relative;
+  height: 600px;
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.main__main_slide_picture_box {
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 2px solid orange;
+}
+
+.main__main_slide_picture_img {
+  width: 100%;
+}
+
+.main__main_slide_info_box {
+  position: absolute;
+  left: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid red;
+}
+
+.main__main_slide_title {
+  @include fontMixin(#fff, 80px) {
+    font-weight: bold;
+  }
+}
+
+.main__main_slide_sub_info {
+  width: 400px;
+
+  @include fontMixin(rgb(180, 180, 180), 20px) {
+    font-weight: 500;
+  }
+}
+
+.main__poster_row {
+  @include floatClear;
+  margin-bottom: 40px;
+}
+
+.main__poster_img {
+  width: 100%;
+}
+
+.main__category_title {
+  font-size: 22px;
+}
+
+.main__poster_box_an {
+  color: #333;
+
+  &:hover {
+    color: #333;
+  }
+}
+
+.main__poster_box {
+  float: left;
+  width: 300px;
+  padding: 15px;
+  margin: 20px 15px;
+  transition: .5s;
+  border: 1px solid #ececec;
+
+  &:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+    transform: scale(1.05);
+  }
+}
