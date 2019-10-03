@@ -8,13 +8,13 @@
 <body>
   <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
   <main class="container-fluid">
-
+    
     <div class="main__slider">
       <% mainSlideData.map(slide_info => { %>
-      <div class="main__slide_box row"
+        <div class="main__slide_box row"
         style="background-image: url('https://yts.tl/<%= slide_info.background_image_original %>')">
         <div class="main__slide_dim"></div>
-        <div class="row">
+        <div class="row margin_none">
           <div class="col-lg-6 main__slide_col_box left">
             <div class="main__main_slide_info_box">
               <h2 class="main__main_slide_title"><%= slide_info.title_long %></h2>
@@ -46,6 +46,7 @@
       </div>
       <% }) %>
     </div>
+    
 
 
     <% categoryData.map(category_list => { %>

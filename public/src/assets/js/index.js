@@ -1,8 +1,7 @@
-console.log("뿌앵");
+
 $(document).ready(function () {
 
   Array.from(document.querySelectorAll('[data-rating]')).map(list => {
-    console.log(list);
     list.style.width = `${list.getAttribute('data-rating')}%`;
   })
 
@@ -13,7 +12,9 @@ $(document).ready(function () {
     fade: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    prevArrow: '<span class="slider__btn prev"><i class="fas fa-caret-left"></i></span>',
+    nextArrow: '<span class="slider__btn next"><i class="fas fa-caret-right"></i></span>',
   });
 
   $('.main__poster_row').slick({
