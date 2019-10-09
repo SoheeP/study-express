@@ -41,7 +41,13 @@
           <a href="#">notice</a>
         </li>
         <li><a href="/auth/signup">Sign up</a></li>
-        <li><a href="/auth/login">Login</a></li>
+        <li>
+          <% if(locals.sess.user) { %>
+            <a href="/auth/logout">Logout</a>
+          <% } else { %>
+            <a href="/auth/login">Login</a>
+          <% } %>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -8,44 +8,81 @@
 <body>
   <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
   <main class="container">
-    <div class="row">
-      <div class="detail__slide">
-        <% detailSlide.map(slide_list => { %>
-        <div class="detail__slide_box">
-          <a href="/movie/detail/<%= slide_list.id %>" class="detail__slide_box_an">
-            <img src="https://yts.tl<%= slide_list.medium_cover_image %>" alt="" class="detail__slide_box_img">
-          </a>
+    <!-- SECTION: -->
+    <section>      
+      <div class="row">
+        <div class="detail__slide">
+          <% detailSlide.map(slide_list => { %>
+          <div class="detail__slide_box">
+            <a href="/movie/detail/<%= slide_list.id %>" class="detail__slide_box_an">
+              <img src="https://yts.tl<%= slide_list.medium_cover_image %>" alt="" class="detail__slide_box_img">
+            </a>
+          </div>
+          <% }) %>
         </div>
-        <% }) %>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <img src="https://yts.tl/<%= movieDetail.large_cover_image %>" alt="">
-      </div>
-      <div class="col-lg-6">
-        <h2 class="detail__movie_title">
-          <%= movieDetail.title_long %>
-        </h2>
-        <div class="detail__movie_info">
-          <div class="detail__movie_rating">
-            <span>평점:</span>
-            <span><%= movieDetail.rating %></span>
-          </div>
-          <div class="detail__movie_sub_info">
-            <span>상영시간: <%= movieDetail.runtime %> 분</span>
-            <span>장르: <%= movieDetail.genres %></span>
-            <span>언어: <%= movieDetail.language %></span>
-            <span>등급: <%= movieDetail.mpa_rating %></span>
-          </div>
-          <div class="detail__movie_summary">
-            <%= movieDetail.description_full %>
-          </div>
+    </section>
 
+    <!-- SECTION: -->
+    <section>
+      <div class="row">
+        <div class="col-lg-6">
+          <img src="https://yts.tl/<%= movieDetail.large_cover_image %>" alt="">
+        </div>
+        <div class="col-lg-6">
+          <h2 class="detail__movie_title">
+            <%= movieDetail.title_long %>
+          </h2>
+          <div class="detail__movie_info">
+            <div class="detail__movie_rating">
+              <span>평점:</span>
+              <span><%= movieDetail.rating %></span>
+            </div>
+            <div class="detail__movie_sub_info">
+              <span>상영시간: <%= movieDetail.runtime %> 분</span>
+              <span>장르: <%= movieDetail.genres %></span>
+              <span>언어: <%= movieDetail.language %></span>
+              <span>등급: <%= movieDetail.mpa_rating %></span>
+            </div>
+            <div class="detail__movie_summary">
+              <%= movieDetail.description_full %>
+            </div>
+  
+          </div>
         </div>
       </div>
-    </div>
-    <h1>디테일</h1>
+    </section>
+
+    <!-- SECTION:  -->
+    <section class="comment">
+      <div class="row margin-none">
+        <h3 class="detail__comment_title">Comment</h3>
+        <div class="comment__box">
+          <div class="row">
+            <div class="col-lg-2">이쯔녕</div>
+            <div class="col-lg-8">이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^*</div>
+            <div class="col-lg-2">2019-10-09</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <% if(!sess.user){ %>
+                <div class="detail__login_box unLogin">
+                  <a href="/auth/login">로그인이 필요합니다. 클릭하시면 로그인 페이지로 이동합니다.</a>
+                </div>
+
+              <% } else { %>
+                <div class="detail__login_box isLogin">
+                  <form action="">
+                      <textarea name="" id="" cols="30" rows="10"></textarea>
+                      <button>글쓰기</button>
+                  </form>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
   </main>
