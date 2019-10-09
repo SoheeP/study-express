@@ -86,9 +86,18 @@ function Axios(config, callback) {
 }
 
 
+function isLogged(obj,cb1,cb2){
+  
+  return (obj)?cb1() : cb2()
+}
+
+
+
+
 
 exports.dummy       = dummy;
 exports.log         = log;
 exports.listAxios   = listAxios;
 exports.Axios       = Axios;
 exports.commandLine = commandLine;
+exports.isLogged    = isLogged;

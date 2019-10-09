@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var common = require('./routes/common');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,6 +32,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next){
   //locals
   res.locals.sess = req.session;
+  console.log(req.session.user,'eeee');
+  res.locals.isLogged = req.session.user;
+  res.locals.co = common;
   next();
 })
 
