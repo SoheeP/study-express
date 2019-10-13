@@ -76,7 +76,7 @@
                 Logout!!
               <% } %>
 
-              <% if(!sess.user){ %>
+              <% if(!isLogged){ %>
                 <div class="detail__login_box unLogin">
                   <a href="/auth/login">로그인이 필요합니다. 클릭하시면 로그인 페이지로 이동합니다.</a>
                 </div>
@@ -84,11 +84,14 @@
               <% } else { %>
                 <div class="detail__login_box isLogin">
                   <form action="">
-                      <textarea name="" id="" cols="30" rows="10"></textarea>
+                      <input type="text" placeholder="name">
+                      <textarea name="" id="" cols="30" rows="10" placeholder="content"></textarea>
                       <button>글쓰기</button>
                   </form>
                 </div>
               <% } %>
+
+
             </div>
           </div>
         </div>

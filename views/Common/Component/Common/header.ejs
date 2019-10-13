@@ -40,7 +40,13 @@
         <li>
           <a href="#">notice</a>
         </li>
-        <li><a href="/auth/signup">Sign up</a></li>
+        <li>
+        <% if(!isLogged) { %>
+          <a href="/auth/signup">Sign up</a>
+        <% } else { %>
+          <a href="/users/mypage">My page</a>
+        <% } %>
+      </li>
         <li>
           <% if(locals.sess.user) { %>
             <a href="/auth/logout">Logout</a>

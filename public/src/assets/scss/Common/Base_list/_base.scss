@@ -11,12 +11,12 @@
 
 
  // Helper
-@import 'variables';
+@import './variables';
 // @import './variables';
-@import 'function';
-@import 'mixins';
+@import './function';
+@import './mixins';
 
 // Base
-@import 'com';
+@import './com';
 
 // Vender
