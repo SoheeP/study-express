@@ -8,20 +8,18 @@
 <body>
   <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
   <main class="container">
-    <div class="row">
-      <div class="detail__slide">
-        <% detailSlide.map(slide_list => { %>
-        <div class="detail__slide_box">
-          <a href="/movie/detail/<%= slide_list.id %>" class="detail__slide_box_an">
-            <img src="https://yts.tl<%= slide_list.medium_cover_image %>" alt="" class="detail__slide_box_img">
-          </a>
+    <!-- SECTION: -->
+    <section>      
+      <div class="row">
+        <div class="detail__slide">
+          <% detailSlide.map(slide_list => { %>
+          <div class="detail__slide_box">
+            <a href="/movie/detail/<%= slide_list.id %>" class="detail__slide_box_an">
+              <img src="https://yts.tl<%= slide_list.medium_cover_image %>" alt="" class="detail__slide_box_img">
+            </a>
+          </div>
+          <% }) %>
         </div>
-        <% }) %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <img src="https://yts.tl/<%= movieDetail.large_cover_image %>" alt="">
       </div>
       <div class="col-lg-6">
         <div class="page-header">
@@ -41,13 +39,53 @@
             <p><span class="detail__info_title">언어: </span><%= movieDetail.language %></p>
             <p><span class="detail__info_title">등급: </span><%= movieDetail.mpa_rating %></p>
           </div>
-          <div class="detail__movie_summary">
-            <%= movieDetail.description_full %>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION:  -->
+    <section class="comment">
+      <div class="row margin-none">
+        <h3 class="detail__comment_title">Comment</h3>
+        <div class="comment__box">
+          <div class="row">
+            <div class="col-lg-2">이쯔녕</div>
+            <div class="col-lg-8">이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^* 이영화 너무 잼있어효 *^^*</div>
+            <div class="col-lg-2">2019-10-09</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+
+              <!-- NOTE: 이렇게 해도 로그인 여부를 확인 할수 있어요 ㅎㅎ  -->
+              <!-- app.js 에 app.use안에다가 isLogged를 만들어줬어욯ㅎㅎ -->
+
+              <%if (isLogged) {%>
+                Login!!
+              <% } else{ %>
+                Logout!!
+              <% } %>
+
+              <% if(!isLogged){ %>
+                <div class="detail__login_box unLogin">
+                  <a href="/auth/login">로그인이 필요합니다. 클릭하시면 로그인 페이지로 이동합니다.</a>
+                </div>
+
+              <% } else { %>
+                <div class="detail__login_box isLogin">
+                  <form action="">
+                      <input type="text" placeholder="name">
+                      <textarea name="" id="" cols="30" rows="10" placeholder="content"></textarea>
+                      <button>글쓰기</button>
+                  </form>
+                </div>
+              <% } %>
+
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <h1>디테일</h1>
+    </section>
 
 
   </main>

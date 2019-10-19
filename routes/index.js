@@ -14,13 +14,14 @@ var {
   moment,
   axios
 } = require('./npm_modules');
-
+var {wrap} = require('./middlewares');
 
 
 
 
 /* 인덱스페이지 */
-router.get('/', async function (req, res, next) {
+router.get('/', wrap(async function (req, res, next) {
+  console.log(req.session);
   let limit = 10;
   let body = {};
   let axiosLikeConfig = {
@@ -69,7 +70,7 @@ router.get('/', async function (req, res, next) {
     }));
   body.pageName = 'Home',
     res.render('index', body);
-});
+}) );
 
 
 /**

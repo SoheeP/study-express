@@ -43,9 +43,29 @@
   .slick-list {
     padding: 20px;
   }
-
+ 
 }
-
+ 
 .detail__slide_box_an {
   display: inline-block;
+}
+
+.comment{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  border: 1px solid #ececec;
+}
+.detail__login_box {
+  padding: 15px;
+
+  &.unLogin {
+    text-align: center;
+    font-size: 18px; 
+    background: rgba(0,0,0,.1);
+  } 
+}
+.detail__comment_title{
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 20px;
 }

@@ -6,6 +6,55 @@ var {
   util
 } = require('./npm_modules');
 
+let resetColor = "\x1b[0m";
+let clc = {
+  bright: `\x1b[1m%s${resetColor}`,
+  dim: `\x1b[2m%s${resetColor}`,
+  underscore: `\x1b[4m%s${resetColor}`,
+  blink: `\x1b[5m%s${resetColor}`,
+  reverse: `\x1b[7m%s${resetColor}`,
+  Hidden: `\x1b[8m%s${resetColor}`,
+  black: `\x1b[30m%s${resetColor}`,
+  red: `\x1b[31m%s${resetColor}`,
+  green: `\x1b[32m%s${resetColor}`,
+  yello: `\x1b[33m%s${resetColor}`,
+  blue: `\x1b[34m%s${resetColor}`,
+  magenta: `\x1b[35m%s${resetColor}`,
+  cyan: `\x1b[36m%s${resetColor}`,
+  white: `\x1b[37m%s${resetColor}`,
+  bgBlack: `\x1b[40m%s${resetColor}`,
+  bgRed: `\x1b[41m%s${resetColor}`,
+  bgGreen: `\x1b[42m%s${resetColor}`,
+  bgYellow: `\x1b[43m%s${resetColor}`,
+  bgBlue: `\x1b[44m%s${resetColor}`,
+  bgMagenta: `\x1b[45m%s${resetColor}`,
+  bgCyan: `\x1b[46m%s${resetColor}`,
+  bgWhite: `\x1b[47m%s${resetColor}`,
+};
+
+const commandLine = `==============================================================`;
+/**
+ * 
+ * @param {*} txt 
+ * @param {*} color 
+ * @param {*} bool 
+ */
+function log(txt, color,bool = false) {
+  if(!color){
+    if(bool === true){
+      console.log(util.inspect(txt, false, null, true ));
+    }else{
+      console.log(txt);
+    }
+  }else{
+    color = color || 'bright'
+    console.log(clc[color], txt);
+  }
+}
+
+
+
+
 /**
  * 
  */
@@ -33,12 +82,22 @@ function listAxios(config, callback) {
 function Axios(config, callback) {
   const apiAddress = 'http://localhost:8081';
   config.url = apiAddress + config.url;
-  return axios(config)
+  return axios(config).then(callback)
+}
+
+
+function isLogged(obj,cb1,cb2){
+  
+  return (obj)?cb1() : cb2()
 }
 
 
 
-exports.dummy = dummy;
-exports.log = log;
-exports.listAxios = listAxios;
-exports.Axios = Axios;
+
+
+exports.dummy       = dummy;
+exports.log         = log;
+exports.listAxios   = listAxios;
+exports.Axios       = Axios;
+exports.commandLine = commandLine;
+exports.isLogged    = isLogged;

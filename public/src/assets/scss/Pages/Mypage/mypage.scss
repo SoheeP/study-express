@@ -1,0 +1,27 @@
+@import './../../Common/Base_list/base';
+
+.mypage__nav {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.mypage__profile_title{
+  font-weight: bold;
+  font-size: 20px;
+}
+.mypage__menu_box {
+  // padding: 15px;
+  padding-top: 40px;
+}
+
+.mypage__menu {}
+
+.mypage__menu_list {
+  display: block;
+  padding: 15px;
+  border-bottom: 1px solid #ececec;
+
+  &:hover {
+    background: rgba(0, 0, 0, .1);
+  }
+}
