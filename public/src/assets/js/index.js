@@ -13,8 +13,8 @@ $(document).ready(function () {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: '<span class="slider__btn prev"><i class="fas fa-caret-left"></i></span>',
-    nextArrow: '<span class="slider__btn next"><i class="fas fa-caret-right"></i></span>',
+    prevArrow: '<span class="main__main_slide_button prev"><i class="fas fa-caret-left"></i></span>',
+    nextArrow: '<span class="main__main_slide_button next"><i class="fas fa-caret-right"></i></span>',
   });
 
   $('.main__poster_row').slick({
@@ -51,7 +51,9 @@ $(document).ready(function () {
           speed: 500,
         }
       }
-    ]
+    ],
+    prevArrow: '<span class="main__poster_button prev"><i class="fas fa-caret-left"></i></span>',
+    nextArrow: '<span class="main__poster_button next"><i class="fas fa-caret-right"></i></span>',
   });
 
 

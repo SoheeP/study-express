@@ -178,3 +178,9 @@ div {
     margin-left: -$size;
   }
 }
+
+@mixin positionAbsCenter{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

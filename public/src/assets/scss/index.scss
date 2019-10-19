@@ -110,6 +110,18 @@
 .main__main_slide_rating {
   color: rgb(233, 233, 233);
 }
+.main__main_slide_button {
+  @include positionAbsCenter;
+  @include fontMixin(#fff, 55px);
+  z-index: 999;
+  cursor: pointer;
+  &.prev{
+    left: 0;
+  }
+  &.next{
+    right: 0;
+  }
+}
 
 .main__poster_row {
   @include floatClear;
@@ -143,5 +155,18 @@
   &:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
     transform: scale(1.05);
+  }
+}
+.main__poster_button{
+  @include positionAbsCenter;
+  @include fontMixin(#777, 32px);
+  text-shadow: 1px 1px #fff;
+  z-index: 999;
+  cursor: pointer;
+  &.prev{
+    left: 0;
+  }
+  &.next{
+    right: 0;
   }
 }

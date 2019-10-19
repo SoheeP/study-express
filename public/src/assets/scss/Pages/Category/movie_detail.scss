@@ -9,6 +9,21 @@
     // transform: scale(1.1);
   }
 }
+.detail__slide_box_img {
+  width: 50px;
+}
+
+.detail__slide_box_an {
+  transition: .2s;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+.detail__movie_poster{
+  display: block;
+  margin: 0 auto;
+}
 .detail__movie_title{
   font-size: 28px;
   font-weight: bold;
@@ -27,17 +42,6 @@
 .detail__movie_summary{
   line-height: 1.5;
 }
-.detail__slide_box_img {
-  width: 50px;
-}
-
-.detail__slide_box_an {
-  transition: .2s;
-
-  &:hover {
-    transform: scale(1.5);
-  }
-}
 
 .detail__slide {
   .slick-list {
@@ -52,9 +56,34 @@
 
 .comment{
   margin-top: 100px;
-  margin-bottom: 100px;
-  border: 1px solid #ececec;
+  margin-bottom: 100px;  
 }
+.detail__comment_title{
+  font-weight: bold;
+  font-size: 22px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #ececec;
+  margin-bottom: 30px;
+}
+
+.comment__list{
+  padding: 10px 0;
+  border: {
+    top: 1px solid #ececec;
+    left: 1px solid #ececec;
+    right: 1px solid #ececec;
+  }
+  &:last-of-type{
+    border-bottom: 1px solid #ececec;
+  }
+  @include floatClear;
+}
+.detail__comment{
+  &_author{
+    font-weight: bold;
+  }
+}
+
 .detail__login_box {
   padding: 15px;
 
@@ -63,9 +92,4 @@
     font-size: 18px; 
     background: rgba(0,0,0,.1);
   } 
-}
-.detail__comment_title{
-  font-weight: bold;
-  font-size: 22px;
-  margin-bottom: 20px;
 }
