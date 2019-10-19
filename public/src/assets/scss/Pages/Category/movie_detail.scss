@@ -9,7 +9,24 @@
     // transform: scale(1.1);
   }
 }
+.detail__movie_title{
+  font-size: 28px;
+  font-weight: bold;
+}
+.detail__movie_year{
+  font-size: 18px;
+}
 
+.detail__movie_info{
+  font-size: 15px;
+  line-height: 1.8
+}
+.detail__info_title{
+  font-weight: bold;
+}
+.detail__movie_summary{
+  line-height: 1.5;
+}
 .detail__slide_box_img {
   width: 50px;
 }

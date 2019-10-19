@@ -24,24 +24,26 @@
         <img src="https://yts.tl/<%= movieDetail.large_cover_image %>" alt="">
       </div>
       <div class="col-lg-6">
-        <h2 class="detail__movie_title">
-          <%= movieDetail.title_long %>
-        </h2>
+        <div class="page-header">
+          <h2 class="detail__movie_title"><%= movieDetail.title %> <small
+              class="detail__movie_year">(<%= movieDetail.year %>)</small></h2>
+        </div>
         <div class="detail__movie_info">
           <div class="detail__movie_rating">
-            <span>평점:</span>
-            <span><%= movieDetail.rating %></span>
+            <p>
+              <span class="detail__info_title">평점:</span>
+              <span><%= movieDetail.rating %></span>
+            </p>
           </div>
           <div class="detail__movie_sub_info">
-            <span>상영시간: <%= movieDetail.runtime %> 분</span>
-            <span>장르: <%= movieDetail.genres %></span>
-            <span>언어: <%= movieDetail.language %></span>
-            <span>등급: <%= movieDetail.mpa_rating %></span>
+            <p><span class="detail__info_title">상영시간: </span><%= movieDetail.runtime %> 분</p>
+            <p><span class="detail__info_title">장르: </span><%= movieDetail.genres %></p>
+            <p><span class="detail__info_title">언어: </span><%= movieDetail.language %></p>
+            <p><span class="detail__info_title">등급: </span><%= movieDetail.mpa_rating %></p>
           </div>
           <div class="detail__movie_summary">
             <%= movieDetail.description_full %>
           </div>
-
         </div>
       </div>
     </div>
