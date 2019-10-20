@@ -119,10 +119,8 @@ router.get('/:category/detail/:seq', async function (req, res, next) {
   let body = {};
   let movie_seq = req.params.seq;
   let pageName = 'movie_detail';
-
   let randomSortBy = ['title', 'year', 'rating', 'peers', 'seeds', 'download_count', 'like_count', 'date_added'];
   let randomSort = randomSortBy[Math.floor(Math.random() * randomSortBy.length)]
-
   let axiosDetailConfig = {
     method: 'get',
     url: `/movie/detail?movie_id=${movie_seq}`,
