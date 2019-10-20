@@ -3,7 +3,8 @@ var {
   _,
   moment,
   axios,
-  util
+  util,
+  svgCaptcha
 } = require('./npm_modules');
 
 let resetColor = "\x1b[0m";
@@ -92,12 +93,40 @@ function isLogged(obj,cb1,cb2){
 }
 
 
+function replaceAll(str, searchStr, replaceStr) {
+  return str.split(searchStr).join(replaceStr);
+}
 
 
+svgCaptcha.options.charPreset = '0123456789';
+function createSvgCaptcha(){
+  return svgCaptcha.create({
+    size: 6,
+    color: true,
+    noise: 1,
+    background: '#666'
+  })
+}
+ 
 
-exports.dummy       = dummy;
-exports.log         = log;
-exports.listAxios   = listAxios;
-exports.Axios       = Axios;
-exports.commandLine = commandLine;
-exports.isLogged    = isLogged;
+function varifivationMailForm(token){
+  return `
+  <div style="width: 300px;margin: auto;padding: 15px;">
+  <h3 style="border-bottom: 1px solid #ececec;margin-top: 20px;padding-bottom: 10px;">Email Varifivation</h3>
+  <h4>Token : <span style="font-size: 14px;font-weight: 500;color: #666;text-decoration: underline;">${token}</span></h4>
+  <div style="font-size: 14px;">
+    Please enter your token number into the registration site input.
+  </div>
+  </div>
+  ` 
+}
+
+exports.dummy                = dummy;
+exports.log                  = log;
+exports.listAxios            = listAxios;
+exports.Axios                = Axios;
+exports.commandLine          = commandLine;
+exports.isLogged             = isLogged;
+exports.createSvgCaptcha     = createSvgCaptcha;
+exports.replaceAll           = replaceAll;
+exports.varifivationMailForm = varifivationMailForm;
