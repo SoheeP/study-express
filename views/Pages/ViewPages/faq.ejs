@@ -8,7 +8,25 @@
 <body>
   <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
   <main class="container">
-    dnd
+    <h1 class="faq__title">FAQ</h1>
+    <div class="panel-group faq__box" id="accordion" role="tablist" aria-multiselectable="true">
+      <% faqData.map((list)=>{ %>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="heading<%= list.id %>">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= list.id %>" aria-expanded="true" aria-controls="collapse<%= list.id%>">
+                <%= list.title %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapse<%= list.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= list.id %>">
+            <div class="panel-body">
+                <%= list.body %>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
   </main>
   <%- include(`${process.cwd()}/views/Common/Component/Common/footer.ejs`) %>
   <%- include(`${process.cwd()}/views/Common/Base/foot.ejs`, {path: 'Pages/ViewPages/faq'}) %>

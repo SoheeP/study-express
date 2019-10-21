@@ -88,10 +88,6 @@ router.route('/logout')
  */
 router.route('/signup')
   .get(wrap(async (req, res, next) => {
-
-
-
-
     let captcha = createSvgCaptcha();
     let body = {};
     body.captcha = captcha;
