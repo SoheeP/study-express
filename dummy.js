@@ -48,5 +48,30 @@ function listPage(category){
   }
 }
 
+function freeBoardList(){
+  let body = {
+    boardList: [],
+    pageData: {
+      totalPage: 19,
+      page: 1,
+      startPage: 1,
+      endPage: 10,
+      pageList:10
+    }
+  };
+
+  for(let i = 0; i < 10 ; i++){
+    body.boardList.push({
+      title: `Titletittle ${i}`,
+      author: `author ${i}`,
+      date: `2019-10-27`,
+      id: i
+    })
+  }
+
+  return body;
+}
+
 exports.listPage  = listPage;
 exports.indexInfo = indexInfo;
+exports.freeBoardList = freeBoardList;

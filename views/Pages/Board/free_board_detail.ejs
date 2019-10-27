@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include(`${process.cwd()}/views/Common/Base/head.ejs`, {path: 'Pages/Board/board',title:"Free board"}) %>
+</head>
+
+<body>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
+  <main class="container freeBoardDetail" id="freeBoardDetail">
+    <div class="freeBoardDetail__box">
+
+      <% if(detailMode === 'view'){ %>
+      <div class="page-header freeBoardDetail__header">
+        <h1 class="strong freeBoardDetail__title">
+          <%=  boardDetail.title %> <small><%=  boardDetail.author %></small>
+          <small class="freeBoardDetail__date"><%=  boardDetail.date %></small>
+        </h1>
+      </div>
+      <div class="freeBoardDetail__content">
+        <%- boardDetail.content %>
+      </div>
+      <div class="freeBoardDetail__button__box">
+        <% if( boardDetail.userSeq === (sess.user && sess.user.seq)){ %>
+        <form action="/board/free/delete" method="POST" class="freeBoardDetail__form delete">
+          <input type="hidden" value="<%=  boardDetail.seq %>" name="boardSeq">
+          <button class="btn btn-danger">삭제</button>
+        </form>
+        <% if(detailMode === 'view'){ %>
+        <a href="/board/free/detail/modify/<%=  boardDetail.seq %>" class="btn btn-info">수정</a>
+        <% } %>
+        <% } %>
+        <a class="btn btn-default" href="/board/free/list/1">목록으로</a>
+      </div>
+      <% } else { %>
+      <form method="post" action="/board/free/modify">
+        <input type="hidden" value="<%=  boardDetail.seq %>" name="boardSeq">
+        <div class="freeBoardWrite__row">
+          <input type="text" placeholder="제목" name="title" class="form-control" autocomplete="off"
+            value="<%=  boardDetail.title %>">
+        </div>
+        <div class="freeBoardWrite__row">
+          <textarea id="summernote" name="content"><%- boardDetail.content %></textarea>
+        </div>
+        <div class="freeBoardWrite__row">
+          <div class="freeBoardWrite__btn__box">
+            <button class="btn btn-info">수정</button>
+            <a class="btn btn-default" href="/board/free/list/1"> 취소</a>
+          </div>
+        </div>
+      </form>
+      <% }%>
+
+
+    </div>
+
+  </main>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/Common/Base/foot.ejs`, {path: 'Pages/Board/board'}) %>
+</body>
+
+</html>

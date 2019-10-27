@@ -121,6 +121,13 @@ function varifivationMailForm(token){
   ` 
 }
 
+
+function zeroNum (num){
+  return (num < 10 )?'0'+num:num.toString()
+}
+
+
+
 exports.dummy                = dummy;
 exports.log                  = log;
 exports.listAxios            = listAxios;
@@ -130,3 +137,4 @@ exports.isLogged             = isLogged;
 exports.createSvgCaptcha     = createSvgCaptcha;
 exports.replaceAll           = replaceAll;
 exports.varifivationMailForm = varifivationMailForm;
+exports.zeroNum              = zeroNum;

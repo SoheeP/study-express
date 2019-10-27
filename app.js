@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var viewsRouter = require('./routes/views');
 var authRouter = require('./routes/auth');
+var boardRouter = require('./routes/board');
 
 var app = express();
 console.log(__dirname);
@@ -32,7 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next){
   //locals
   res.locals.sess = req.session;
-  console.log(req.session.user,'eeee');
   res.locals.isLogged = req.session.user;
   res.locals.co = common;
   next();
@@ -43,6 +43,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/views', viewsRouter);
 app.use('/auth', authRouter);
+app.use('/board', boardRouter);
+
 
 
 // catch 404 and forward to error handler

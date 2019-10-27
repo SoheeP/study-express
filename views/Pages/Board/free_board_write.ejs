@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include(`${process.cwd()}/views/Common/Base/head.ejs`, {path: 'Pages/Board/board',title:"Free board"}) %>
+</head>
+
+<body>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
+  <main class="container freeBoardWrite" id="freeBoardWrite">
+    <div class="freeBoardWrite__box">
+      <h2 class="freeBoardWrite__title">Write page</h2>
+      <form method="post" action="/board/free/write/upload">
+        <div class="freeBoardWrite__row">
+          <input type="text" placeholder="제목" name="title" class="form-control" autocomplete="off">
+        </div>
+        <div class="freeBoardWrite__row">
+          <textarea id="summernote" name="content"></textarea>
+        </div>
+        <div class="freeBoardWrite__row">
+          <div class="freeBoardWrite__btn__box">
+            <button class="btn btn-primary">등록</button>
+            <a class="btn btn-default" href="/board/free/list/1"> 취소</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/Common/Base/foot.ejs`, {path: 'Pages/Board/board'}) %>
+</body>
+
+</html>

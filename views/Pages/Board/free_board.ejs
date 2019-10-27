@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include(`${process.cwd()}/views/Common/Base/head.ejs`, {path: 'Pages/Board/board',title:"Free board"}) %>
+</head>
+
+<body>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/header.ejs`) %>
+  <main class="container freeBoard">
+    <div class="freeBoard__box">
+      <h2 class="freeBoard__title">Board List</h2>
+      <div class="freeBoard__list__box">
+        <div class="freeBoard__filter__box">
+          <form class="navbar-form " role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </form>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>작성일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% boardList.map((list, idx)=>{ %>
+            <tr>
+              <td>
+                <%= co.zeroNum((pageData.page-1) * pageData.page_rows_size  + (idx+1)) %>
+              </td>
+              <td>
+                <a href="/board/free/detail/view/<%= list.seq %>" class="freeBoard__list__link"><%= list.title %></a>
+              </td>
+              <td><%= list.author %></td>
+              <td><%= list.date %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <div class="freeBoard__button__box">
+         <a href="/board/free/write" class="btn btn-default">글쓰기</a>
+        </div>
+
+        <nav class="pagenation__box">
+          <ul class="pagination">
+            <li class="<%= pageData.startPage === 1 && 'hidden' %>">
+              <a href="/board/free/list/<%= pageData.startPage - 1 %>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <% for(let i = +pageData.startPage ; i <= +pageData.endPage ; i ++){ %>
+              <li class="<%= i === +pageData.page && 'active'%>"><a href="/board/free/list/<%= i %>"><%= i %></a></li>
+            <% } %>
+
+            
+            <li class="<%= pageData.totalPage === pageData.endPage && 'hidden' %>">
+              <a href="/board/free/list/<%= pageData.endPage + 1 %>" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </main>
+  <%- include(`${process.cwd()}/views/Common/Component/Common/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/Common/Base/foot.ejs`, {path: 'Pages/Board/board'}) %>
+</body>
+
+</html>

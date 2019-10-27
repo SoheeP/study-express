@@ -1,0 +1,82 @@
+@import './../../Common/Base_list/base';
+@include pagenation();
+// PAGE: free board
+.freeBoard{
+  .freeBoard__box{
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .freeBoard__title{
+    @include fontMixin(#000, 22px){
+      font-weight: bold;
+    }
+  }
+  .freeBoard__list__box{
+    padding: 5px;
+ 
+  }
+  .freeBoard__list__link{
+    display: block;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  .freeBoard__button__box{
+    text-align: right;
+  }
+  .freeBoard__filter__box{
+    text-align: right;
+  }
+}
+
+// PAGE: free board write
+.freeBoardWrite{
+  .freeBoardWrite__box{
+    margin: 100px 0;
+  }
+  .freeBoardWrite__title{
+    @include fontMixin(#000, 22px){
+      font-weight: bold;
+    }
+    margin-bottom: 40px;
+  }
+  .freeBoardWrite__btn__box{
+    text-align: center;
+  }
+  .freeBoardWrite__row{
+    margin-bottom: 20px;
+  }
+}
+
+// PAGE: free board detail
+.freeBoardDetail{
+  .freeBoardDetail__box{
+    border: 1px solid #ececec;
+    padding: 0 30px 50px 30px;
+    margin: 100px 0;
+  }
+  .freeBoardDetail__header{
+    position: relative;
+  }
+  .freeBoardDetail__title{
+    @include fontMixin(#000, 25px)
+  }
+  .freeBoardDetail__date{
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    color: #bbb;
+    font-weight: 300;
+  }
+  .freeBoardDetail__content{
+    @include fontMixin(#333, 16px){
+      line-height: 1.8;
+    }
+  }
+  .freeBoardDetail__button__box{
+    text-align: right;
+  }
+  .freeBoardDetail__form{
+    display: inline-block;
+  }
+}
