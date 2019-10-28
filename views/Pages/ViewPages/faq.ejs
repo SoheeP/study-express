@@ -10,7 +10,7 @@
   <main class="container">
     <h1 class="faq__title">FAQ</h1>
     <div class="panel-group faq__box" id="accordion" role="tablist" aria-multiselectable="true">
-      <% faqData.map((list)=>{ %>
+      <% faqList.map((list)=>{ %>
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="heading<%= list.id %>">
             <h4 class="panel-title">
@@ -21,7 +21,7 @@
           </div>
           <div id="collapse<%= list.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= list.id %>">
             <div class="panel-body">
-                <%= list.body %>
+                <%= list.content %>
             </div>
           </div>
         </div>

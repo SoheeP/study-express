@@ -17,7 +17,7 @@ const {
 // /board/free/list
 // post : page :1
 
-
+// ROUTER: board list
 router.route('/free/list/:page')
   .get(wrap(async (req, res, next) => {
     const page = req.params.page;
@@ -45,9 +45,9 @@ router.route('/free/list/:page')
     })
   }));
 
-
+// ROUTER: board write
 router.route('/free/write')
-  .get(wrap(async (req, res, next) => {
+  .get(isLoggedModal, wrap(async (req, res, next) => {
     let body = {};
     console.log(req.session);
     body.pageName = 'Board Write';
@@ -58,13 +58,19 @@ router.route('/free/write')
 // ROUTER: board modify
 // /board/free/modify
 // userSeq, boardSeq, title, content
-  router.route('/free/modify')
+router.route('/free/modify')
   .post(wrap(async (req, res, next) => {
     let body = {};
     console.log(req.session);
     body.pageName = 'Board Write';
-    let { seq:userSeq } =  req.session.user;
-    let { boardSeq, title, content} = req.body;
+    let {
+      seq: userSeq
+    } = req.session.user;
+    let {
+      boardSeq,
+      title,
+      content
+    } = req.body;
     console.log(req.body);
     console.log(userSeq);
 
@@ -78,9 +84,11 @@ router.route('/free/write')
         content
       }
     }
-    Axios(boardModifyConfig).then(({data})=>{
+    Axios(boardModifyConfig).then(({
+      data
+    }) => {
       console.log(data);
-      if(data.result === 1){
+      if (data.result === 1) {
         body.title = "수정되었습니다.";
         body.ahref = `/board/free/detail/view/${boardSeq}`;
         res.render('Common/Component/Modules/modal', body);
@@ -98,11 +106,15 @@ router.route('/free/delete')
   .post(wrap(async (req, res, next) => {
     let body = {};
     console.log(req.session);
-    const { boardSeq } = req.body;
-    const { seq:userSeq } = req.session.user;
+    const {
+      boardSeq
+    } = req.body;
+    const {
+      seq: userSeq
+    } = req.session.user;
     console.log(boardSeq, userSeq, '**********');
     body.pageName = 'Board Write';
-    
+
 
     let boardDeleteConfig = {
       url: `/board/free/delete`,
@@ -113,8 +125,10 @@ router.route('/free/delete')
       }
     }
 
-    Axios(boardDeleteConfig).then(({data})=>{
-      if(data.result === 1){
+    Axios(boardDeleteConfig).then(({
+      data
+    }) => {
+      if (data.result === 1) {
         body.title = "정상적으로 삭제되었습니다.";
         body.ahref = "/board/free/list/1";
         res.render('Common/Component/Modules/modal', body);
@@ -159,7 +173,7 @@ router.route('/free/detail/:mode/:boardSeq')
     })
   }));
 
-
+// ROUTER: board update, modify, 
 router.route('/free/write/upload')
   .post(isLoggedModal, wrap(async (req, res, next) => {
     let body = {};
