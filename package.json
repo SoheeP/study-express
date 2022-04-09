@@ -29,7 +29,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nodemon": "^1.19.1",
     "source-map-support": "^0.5.12"
   },
